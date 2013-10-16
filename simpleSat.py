@@ -61,7 +61,7 @@ class Sat():
         try:
 #            print(self.backups)
             lastBackup = self.backups.pop()
-            self.backups = deepcopy(lastBackup.backups)
+            self.backups = lastBackup.backups
             self.constraints = deepcopy(lastBackup.constraints)
             self.solution = deepcopy(lastBackup.solution)
             self.describe("Backtracking...")
