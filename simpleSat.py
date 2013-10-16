@@ -92,7 +92,7 @@ class Sat():
         
     def __deepcopy__(self, memodict={}):
         result = Sat([deepcopy(clause) for clause in self.constraints])
-        result.backups = [deepcopy(sat) for sat in self.backups]
+        result.backups = [sat for sat in self.backups]
         result.solution = [deepcopy(clause) for clause in self.solution]
         return result
         
