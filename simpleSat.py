@@ -75,8 +75,7 @@ class Sat():
             if clause.isUnit():
                 self.describe((str(clause) + " is unit"))
                 return clause
-            else:
-                return None
+        return None
                 
     def getUnitIndex(self):
         i = 0
@@ -145,4 +144,5 @@ class Solver():
                 unit = sat.getBranchUnit()
             if not sat.propagate(unit):
                 return None
+            
                 
