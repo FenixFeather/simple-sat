@@ -54,16 +54,16 @@ class Sat():
 #        return unit
         return Clause([self.constraints[0].literals[0]*sign])
         
-    def backup(self):
+    def backupStupid(self):
         self.backups.append(deepcopy(self))
+        
+    def backup(self):
+        self.backups.append((deepcopy(self.constraints), deepcopy(self.solution)))
         
     def backtrack(self):
         try:
 #            print(self.backups)
-            lastBackup = self.backups.pop()
-            self.backups = lastBackup.backups
-            self.constraints = deepcopy(lastBackup.constraints)
-            self.solution = deepcopy(lastBackup.solution)
+            self.constraints, self.solution = self.backups.pop()
             self.describe("Backtracking...")
             self.propagate(self.getBranchUnit(-1))
             return True
